@@ -1,7 +1,6 @@
 import styled from "styled-components/native";
-import {KeyboardAvoidingView, Platform, View} from "react-native";
 
-export const AuthContainer = styled(Platform.OS === "android" ? View : KeyboardAvoidingView)`
+export const AuthContainer = styled.KeyboardAvoidingView`
   flex: 1;
   justify-content: center;
   align-items: center;
@@ -33,7 +32,7 @@ export const SubmitButton = styled.TouchableOpacity<{height: string}>`
   border-radius: 10px;
   padding: 0 5px;
   text-align: center;
-  height: ${({height}) => `${height}%`}
+  height: ${({height}) => ( height ? `${height}%` : "0px")}
 `
 
 export const AuthTextInputLabel = styled.Text`
