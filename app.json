@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "chocolate-shop-app",
+    "name": "Chocolate Shop",
     "slug": "chocolate-shop-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,7 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "scheme": "chocolate-shop-api",
+    "scheme": "chocolate-shop-app",
     "assetBundlePatterns": [
       "**/*"
     ],
