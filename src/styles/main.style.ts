@@ -5,12 +5,14 @@ export const ProductsContainer = styled.ScrollView`
 
 `
 
-export const ProductCardBox = styled.View`
+export const ProductCardBox = styled.Pressable`
   background-color: #e0e0e0;
   margin: 10px auto;
   border-radius: 10px;
   padding: 10px;
   width: 85%;
+  align-items: center;
+  gap: 7px;
 `
 
 export const ProductName = styled.Text`
@@ -29,6 +31,6 @@ export const ProductDescripton = styled.Text`
 `
 
 export const ProductImage = styled.Image`
-    width: 200px;
-    height: 300px;
+  width: 200px;
+  height: 300px;
 `

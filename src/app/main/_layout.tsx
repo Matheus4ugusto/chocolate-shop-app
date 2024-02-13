@@ -35,6 +35,10 @@ export default function MainLayout(){
                 },
                 headerShown: false
             }}/>
+            <Tabs.Screen name="product/index" options={{
+                href: null,
+                headerShown: false
+            }}/>
         </Tabs>
     )
 }
