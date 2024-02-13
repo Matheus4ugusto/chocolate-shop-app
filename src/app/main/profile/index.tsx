@@ -1,5 +1,12 @@
 import {Text} from "react-native";
-import {LogOutButton, UserBox, UserContainer, UserEmailBox, UserNameBox} from "../../../styles/profile.style";
+import {
+    AdmButton,
+    LogOutButton,
+    UserBox,
+    UserContainer,
+    UserEmailBox,
+    UserNameBox
+} from "../../../styles/profile.style";
 import {push} from "expo-router/build/global-state/routing";
 import {router} from "expo-router";
 
@@ -7,6 +14,10 @@ export default function Profile(){
 
     const logout = () => {
         router.push("/")
+    }
+
+    const administrator = () => {
+        router.push("/adm/")
     }
 
     return(
@@ -23,6 +34,9 @@ export default function Profile(){
                 <LogOutButton onPress={logout}>
                     <Text style={{fontSize: 20, textAlign: "center", color: "#fff"}}>Sair</Text>
                 </LogOutButton>
+                <AdmButton onPress={administrator}>
+                    <Text style={{fontSize: 20, textAlign: "center", color: "#fff"}}>Painel de administrador</Text>
+                </AdmButton>
             </UserBox>
         </UserContainer>
     )

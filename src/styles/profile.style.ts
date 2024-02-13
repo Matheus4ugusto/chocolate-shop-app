@@ -34,3 +34,9 @@ export const LogOutButton = styled.Pressable`
   padding: 5px;
   border-radius: 10px;
 `
+export const AdmButton = styled.Pressable`
+  background-color: blue;
+  width: 50%;
+  padding: 5px;
+  border-radius: 10px;
+`
