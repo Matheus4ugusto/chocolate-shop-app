@@ -7,14 +7,14 @@ import {
     UserEmailBox,
     UserNameBox
 } from "../../../styles/profile.style";
-import {push} from "expo-router/build/global-state/routing";
+
 import {router} from "expo-router";
+import {useAuth} from "../../../contexts/AuthContext";
 
 export default function Profile(){
 
-    const logout = () => {
-        router.push("/")
-    }
+    const {logout} = useAuth()
+
 
     const administrator = () => {
         router.push("/adm/")
@@ -31,7 +31,7 @@ export default function Profile(){
                     <Text style={{fontSize: 20}}>Email do usuário:</Text>
                     <Text style={{fontSize: 20}}>teste@testilson.com</Text>
                 </UserEmailBox>
-                <LogOutButton onPress={logout}>
+                <LogOutButton onPress={() => logout()}>
                     <Text style={{fontSize: 20, textAlign: "center", color: "#fff"}}>Sair</Text>
                 </LogOutButton>
                 <AdmButton onPress={administrator}>

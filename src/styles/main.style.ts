@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import {Link} from "expo-router";
 
 export const ProductsContainer = styled.ScrollView`
 

@@ -1,4 +1,3 @@
-import {Text} from "react-native";
 import ProductCard from "../../components/ProductCard";
 import {ProductsContainer} from "../../styles/main.style";
 
