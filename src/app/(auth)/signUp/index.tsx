@@ -26,8 +26,8 @@ export default function SignUp(){
                 <AuthSubtitle>Seja muito bem-vindo(a)!</AuthSubtitle>
                 <Input label={"Nome:"} placeholder={"Insira o seu nome aqui..."} onChangeText={(t) => setValue("name", t)}/>
                 <Input label={"Email:"} keyboardType={"email-address"} placeholder={"Insira o seu email aqui..."} onChangeText={(t) => setValue("email", t)}/>
-                <Input label={"Senha:"} secureTextEntry placeholder={"Insira a sua senha aqui..."} onChangeText={(t) => setValue("password", t)}/>
-                <Input label={"Confirmação da senha:"} secureTextEntry placeholder={"Confirme a sua senha aqui..."} onChangeText={(t) => setValue("password_confirmation", t)}/>
+                <Input label={"Senha:"}  placeholder={"Insira a sua senha aqui..."} onChangeText={(t) => setValue("password", t)}/>
+                <Input label={"Confirmação da senha:"}  placeholder={"Confirme a sua senha aqui..."} onChangeText={(t) => setValue("password_confirmation", t)}/>
                 <SubmitButton onPress={handleSubmit(signUp)} height="10"><Text style={{fontSize: 25, color: "#F2E0C5"}}>Criar Conta</Text></SubmitButton>
             </AuthBox>
         </AuthContainer>

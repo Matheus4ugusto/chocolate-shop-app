@@ -7,3 +7,7 @@ export interface productProps{
     grammage: string;
     status: number;
 }
+
+export interface cartProductProps extends productProps{
+    quantity: number
+}

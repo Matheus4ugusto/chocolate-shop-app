@@ -35,3 +35,23 @@ export const BuyProductButton = styled.Pressable`
   align-items: center;
   text-align: center;
 `
+
+export const CounterView = styled.View`
+  width: 30%;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
+  gap: 2px;
+`
+
+export const CounterText = styled.Text`
+  font-size: 30px;
+  width: 40px;
+  text-align: center;
+
+`
+
+export const CounterButton = styled.TouchableOpacity<{bgColor: string}>`
+  background-color: ${({bgColor}) => bgColor}
+`

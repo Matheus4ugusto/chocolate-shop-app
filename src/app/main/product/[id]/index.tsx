@@ -1,6 +1,6 @@
 import {Text, View} from "react-native";
 import {
-    BuyProductButton,
+    BuyProductButton, CounterButton, CounterText, CounterView,
     ProductContainer,
     ProductImage,
     ProductName,
@@ -18,6 +18,13 @@ import {moneyFormat} from "../../../../utils/moneyFormat";
 export default function Product({params}: {params: {id: number}}){
     const [product, setProduct] = useState({} as productProps);
     const id = useGlobalSearchParams().id
+    const [counter, setCounter] = useState<number>(1)
+    const increment = () => {
+      setCounter(counter + 1)
+    }
+    const decrement = () => {
+      setCounter(counter -1)
+    }
 
 
     useEffect(() => {
@@ -44,11 +51,20 @@ export default function Product({params}: {params: {id: number}}){
                 {product.name}
             </ProductName>
             <ProductImage src={`http://192.168.1.111:8000/storage/products/${product.id}/${product.image}`}/>
-            <BuyProductButton>
-                <Text style={{color: "#F2E0C5", textAlign: "center"}}>
-                    Adicionar ao carrinho
-                </Text>
-            </BuyProductButton>
+                <View style={{flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
+                    <BuyProductButton>
+                        <Text style={{color: "#F2E0C5", textAlign: "center"}}>
+                            Adicionar ao carrinho
+                        </Text>
+                    </BuyProductButton>
+                    <CounterView>
+                        <CounterButton bgColor="#989797" onPress={decrement} disabled={counter === 1}><CounterText  style={{fontSize: 30}}>-1</CounterText></CounterButton>
+                        <CounterText style={{backgroundColor: "#c9c7c7"}}>
+                            {counter}
+                        </CounterText>
+                        <CounterButton bgColor="#989797" onPress={increment}><CounterText style={{fontSize: 30}}>+1</CounterText></CounterButton>
+                    </CounterView>
+                </View>
             <View style={{width: "80%", marginLeft: "auto", marginRight: "auto", gap: 16, paddingTop: 16, marginBottom: 80}}>
                 <ProductPrice>
                     {moneyFormat(product.price)}
