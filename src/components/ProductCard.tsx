@@ -1,25 +1,23 @@
 import {ProductCardBox, ProductDescripton, ProductImage, ProductName, ProductPrice} from "../styles/main.style";
 import { router} from "expo-router";
+import React from "react";
+import {productProps} from "../types/products";
+import {moneyFormat} from "../utils/moneyFormat";
 
-const ProductCard = () =>{
+const ProductCard:React.FC<productProps> = ({id, name, image, price, description}) =>{
 
     const product = () =>{
-        router.push("main/product")
+        router.push(`/main/product/${id}`)
     }
 
     return(
         <ProductCardBox onPress={product}>
-                        <ProductName>Nome do produto</ProductName>
-                        <ProductImage src="https://placehold.co/200x300.png"/>
+                        <ProductName>{name}</ProductName>
+                        <ProductImage src={`http://192.168.1.111:8000/storage/products/${id}/${image}`}/>
                         <ProductDescripton>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor convallis lacus a
-                            posuere. Sed at nunc purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
-                            ridiculus mus. Donec vestibulum non est sit amet eleifend. Integer ac dignissim arcu, a pulvinar felis.
-                            Fusce congue mi libero, at scelerisque erat scelerisque nec. Orci varius natoque penatibus et magnis dis
-                            parturient montes, nascetur ridiculus mus. Vivamus sem metus, vehicula eget eros quis, pellentesque
-                            interdum odio.
+                            {description}
                         </ProductDescripton>
-                        <ProductPrice>R$9,99</ProductPrice>
+                        <ProductPrice>{moneyFormat(price)}</ProductPrice>
         </ProductCardBox>
     )
 }

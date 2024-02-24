@@ -32,4 +32,5 @@ export const ProductDescripton = styled.Text`
 export const ProductImage = styled.Image`
   width: 200px;
   height: 300px;
+  object-fit: contain;
 `

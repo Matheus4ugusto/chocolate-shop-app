@@ -12,8 +12,9 @@ export const ProductName = styled.Text`
 
 export const ProductImage = styled.Image`
   width: 80%;
-  height: 600px;
+  height: 400px;
   margin: 0 auto;
+  object-fit: contain;
 `
 
 export const ProductDescription = styled.Text`

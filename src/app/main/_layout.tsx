@@ -37,7 +37,7 @@ export default function MainLayout(){
                     },
                     headerShown: false
                 }}/>
-                <Tabs.Screen name="product/index" options={{
+                <Tabs.Screen name="product/[id]/index" options={{
                     href: null,
                     headerShown: false
                 }}/>
