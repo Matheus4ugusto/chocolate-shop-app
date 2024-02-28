@@ -1,16 +1,18 @@
 import {Text, View} from "react-native";
 import {ProductInCartBox} from "../styles/cart.style";
+import {cartProductProps} from "../types/products";
+import {moneyFormat} from "../utils/moneyFormat";
 
-const ProductCardInCart = () => {
+const ProductCardInCart = ({name, quantity, price}: cartProductProps) => {
     return(
         <ProductInCartBox>
-            <View>
-                <Text>Nome do produto</Text>
-                <Text>Qtd.: 3</Text>
+            <View style={{flex: 1}}>
+                <Text>{name}</Text>
+                <Text>Qtd.: {quantity}</Text>
             </View>
             <View>
                 <Text>
-                    R$29,97
+                    {moneyFormat(price * quantity)}
                 </Text>
                 <Text>
                 </Text>

@@ -21,9 +21,8 @@ export interface AuthContextProps{
 
 
 export interface CartContextProps {
-    addToCart:(product: cartProductProps) => void;
+    addToCart:(product: cartProductProps, quantity: number) => void;
     removeFromCart:(product: cartProductProps, quantity: number)=> void;
-    clearCart:(product: cartProductProps)=> void;
-    getCart: () => void;
-    finishPurchase: () => void;
+    clearCart:()=> void;
+    cartProducts: cartProductProps[];
 }

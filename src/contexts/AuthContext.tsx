@@ -44,7 +44,6 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const signUp = async (values: SignUpProps) => {
-        console.log(values)
         try {
             const handleRegister = await register(values);
             setIsLogged(true)

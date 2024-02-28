@@ -26,8 +26,8 @@ export const TotalView = styled.View`
   justify-content: space-between;
 `
 
-export const CheckoutButton = styled.Pressable`
-  background-color: #079a07;
+export const Button = styled.Pressable<{ backgroundColor: string }>`
+  background-color: #${({backgroundColor}) => backgroundColor};
   width: 40%;
   height: 5%;
   align-items: center;

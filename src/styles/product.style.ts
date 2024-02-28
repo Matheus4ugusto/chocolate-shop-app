@@ -26,7 +26,7 @@ export const ProductPrice = styled.Text`
   color: #5D2A0C;  
 `;
 
-export const BuyProductButton = styled.Pressable`
+export const BuyProductButton = styled.TouchableOpacity`
   padding: 16px;
   margin: 16px auto 0 auto;
   border-radius: 10px;

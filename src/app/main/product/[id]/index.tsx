@@ -14,8 +14,12 @@ import {useGlobalSearchParams, useLocalSearchParams, usePathname} from "expo-rou
 import {number} from "yup";
 import {log} from "expo/build/devtools/logger";
 import {moneyFormat} from "../../../../utils/moneyFormat";
+import {useCart} from "../../../../contexts/CartContext";
 
 export default function Product({params}: {params: {id: number}}){
+
+    const {addToCart} = useCart()
+
     const [product, setProduct] = useState({} as productProps);
     const id = useGlobalSearchParams().id
     const [counter, setCounter] = useState<number>(1)
@@ -33,7 +37,6 @@ export default function Product({params}: {params: {id: number}}){
                 try {
                     const data = await getProductsById(Number(id))
                     setProduct(data)
-                    console.log(data)
                 } catch (e) {
                     console.error(`Ops, algo deu errado. ${e}`)
                 }
@@ -44,6 +47,11 @@ export default function Product({params}: {params: {id: number}}){
 
     }, [id]);
 
+    const handleAddToCart = () => {
+        addToCart({...product, quantity: counter}, counter);
+        setCounter(1)
+    }
+
 
     return(
         <ProductContainer>
@@ -52,7 +60,7 @@ export default function Product({params}: {params: {id: number}}){
             </ProductName>
             <ProductImage src={`http://192.168.1.111:8000/storage/products/${product.id}/${product.image}`}/>
                 <View style={{flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-                    <BuyProductButton>
+                    <BuyProductButton onPress={() => handleAddToCart()}>
                         <Text style={{color: "#F2E0C5", textAlign: "center"}}>
                             Adicionar ao carrinho
                         </Text>
