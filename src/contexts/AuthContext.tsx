@@ -10,7 +10,7 @@ const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
     const [isLogged, setIsLogged] = useState<boolean>(false);
 
-    /*useEffect(() => {
+    useEffect(() => {
         const checkLoginStatus = async () => {
             try {
                 const storedToken = await AsyncStorage.getItem("@token");
@@ -26,7 +26,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
         };
 
         checkLoginStatus();
-    }, []);*/
+    }, []);
 
 
     const signIn = async (values: SignInProps) => {

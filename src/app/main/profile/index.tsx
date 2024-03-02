@@ -15,28 +15,12 @@ export default function Profile(){
 
     const {logout} = useAuth()
 
-
-    const administrator = () => {
-        router.push("/adm/")
-    }
-
     return(
         <UserContainer>
             <UserBox>
-                <UserNameBox>
-                    <Text style={{fontSize: 20}}>Nome do usuário:</Text>
-                    <Text style={{fontSize: 20}}>Teste Testando Testilson</Text>
-                </UserNameBox>
-                <UserEmailBox>
-                    <Text style={{fontSize: 20}}>Email do usuário:</Text>
-                    <Text style={{fontSize: 20}}>teste@testilson.com</Text>
-                </UserEmailBox>
                 <LogOutButton onPress={() => logout()}>
                     <Text style={{fontSize: 20, textAlign: "center", color: "#fff"}}>Sair</Text>
                 </LogOutButton>
-                <AdmButton onPress={administrator}>
-                    <Text style={{fontSize: 20, textAlign: "center", color: "#fff"}}>Painel de administrador</Text>
-                </AdmButton>
             </UserBox>
         </UserContainer>
     )
