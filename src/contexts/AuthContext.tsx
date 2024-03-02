@@ -3,7 +3,6 @@ import { AuthContextProps, SignInProps, SignUpProps } from "../types/context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {router} from "expo-router";
 import { api } from "../services/api";
-
 import {login, register} from "../services/auth.service";
 
 const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
@@ -11,15 +10,14 @@ const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
     const [isLogged, setIsLogged] = useState<boolean>(false);
 
-    useEffect(() => {
+    /*useEffect(() => {
         const checkLoginStatus = async () => {
             try {
                 const storedToken = await AsyncStorage.getItem("@token");
                 if (storedToken) {
-                    setIsLogged(true);
                     api.defaults.headers.common.Authorization = `Bearer ${storedToken}`;
                     router.push("/main");
-                } else {
+                } else if (!storedToken && isLogged) {
                     router.push("/");
                 }
             } catch (error) {
@@ -28,7 +26,8 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
         };
 
         checkLoginStatus();
-    }, []);
+    }, []);*/
+
 
     const signIn = async (values: SignInProps) => {
         try {
@@ -39,7 +38,6 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
             router.push("/main");
         } catch (e) {
             console.error("An unexpected error occurred:", e);
-            router.push("/");
         }
     };
 
@@ -54,20 +52,20 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
             router.push("/main");
         }catch (e){
             console.error("An unexpected error occurred:", e);
-            router.push("/");
         }
     };
 
     const logout = async () => {
         try {
-            setIsLogged(false); // Definindo o estado de login como falso
-            await AsyncStorage.removeItem("@token"); // Removendo o token de autenticação do armazenamento
-            api.defaults.headers.common.Authorization = ""; // Limpando o cabeçalho de autorização
-            router.push("/"); // Redirecionando para a página inicial
+            setIsLogged(false);
+            await AsyncStorage.removeItem("@token");
+            api.defaults.headers.common.Authorization = "";
+            router.push("/");
         } catch (error) {
             console.error("Error while logging out:", error);
         }
     };
+
 
 
     return (

@@ -58,7 +58,7 @@ export default function Product({params}: {params: {id: number}}){
             <ProductName>
                 {product.name}
             </ProductName>
-            <ProductImage src={`http://192.168.1.111:8000/storage/products/${product.id}/${product.image}`}/>
+            <ProductImage src={`http://192.168.1.106:8000/storage/products/${product.id}/${product.image}`}/>
                 <View style={{flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
                     <BuyProductButton onPress={() => handleAddToCart()}>
                         <Text style={{color: "#F2E0C5", textAlign: "center"}}>
