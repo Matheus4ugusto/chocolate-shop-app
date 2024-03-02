@@ -4,13 +4,15 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import {router} from "expo-router";
 import { api } from "../services/api";
 import {login, register} from "../services/auth.service";
+import {useToast} from "react-native-toast-notifications";
 
 const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 
 const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
     const [isLogged, setIsLogged] = useState<boolean>(false);
+    const toast = useToast();
 
-    useEffect(() => {
+    /*useEffect(() => {
         const checkLoginStatus = async () => {
             try {
                 const storedToken = await AsyncStorage.getItem("@token");
@@ -26,7 +28,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
         };
 
         checkLoginStatus();
-    }, []);
+    }, []);*/
 
 
     const signIn = async (values: SignInProps) => {
@@ -35,9 +37,19 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
             setIsLogged(true);
             await AsyncStorage.setItem("@token", data.token);
             api.defaults.headers.common.Authorization = `Bearer ${data.token}`;
-            router.push("/main");
+            toast.show("Login efetuado com sucesso!",{
+                type: "success",
+                duration: 2500,
+                placement: "top"
+            })
+            setTimeout(() => {router.push("/main");}, 500)
         } catch (e) {
             console.error("An unexpected error occurred:", e);
+            toast.show("Falha ao realizar login, tente novamente",{
+                type: "error",
+                duration: 2500,
+                placement: "top"
+            })
         }
     };
 
@@ -50,8 +62,19 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
             await AsyncStorage.setItem("@token", handleLogin.token);
             api.defaults.headers.common.Authorization = `Bearer ${handleLogin.token}`;
             router.push("/main");
+            toast.show("Cadastro efetuado com sucesso!",{
+                type: "success",
+                duration: 2500,
+                placement: "top",
+            })
+            setTimeout(() => {router.push("/main");}, 500)
         }catch (e){
             console.error("An unexpected error occurred:", e);
+            toast.show("Falha ao realizar cadastro, tente novamente",{
+                type: "error",
+                duration: 2500,
+                placement: "top"
+            })
         }
     };
 
@@ -60,7 +83,13 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
             setIsLogged(false);
             await AsyncStorage.removeItem("@token");
             api.defaults.headers.common.Authorization = "";
-            router.push("/");
+            toast.show("Saiu com sucesso",{
+                type: "danger",
+                duration: 2500,
+                placement: "top",
+                dangerColor: "#e30404"
+            })
+            setTimeout(() => {router.push("/");}, 500)
         } catch (error) {
             console.error("Error while logging out:", error);
         }
