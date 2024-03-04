@@ -61,7 +61,6 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
             const handleLogin = await login(values);
             await AsyncStorage.setItem("@token", handleLogin.token);
             api.defaults.headers.common.Authorization = `Bearer ${handleLogin.token}`;
-            router.push("/main");
             toast.show("Cadastro efetuado com sucesso!",{
                 type: "success",
                 duration: 2500,
@@ -70,7 +69,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
             setTimeout(() => {router.push("/main");}, 500)
         }catch (e){
             console.error("An unexpected error occurred:", e);
-            toast.show("Falha ao realizar cadastro, tente novamente",{
+            toast.show("Falha ao realizar cadastro, tente novamente!",{
                 type: "error",
                 duration: 2500,
                 placement: "top"
@@ -81,20 +80,46 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
     const requestOTP = async (values: requestOTPProps) => {
         try {
             const data = await requestOTPRequest(values)
-            router.push("/OTP/code")
+            toast.show("Código solicitado com sucesso, por favor verifique seu e-mail!",{
+                type: "success",
+                duration: 2500,
+                placement: "top",
+            })
+            setTimeout(() => {router.push("/OTP/code");}, 500)
         }catch (e){
             console.error(`Um erro inesperado ocorreu, ${e}`)
-            router.push("/")
+            toast.show("Um erro inesperado ocorreu!",{
+                type: "danger",
+                duration: 2500,
+                placement: "top",
+                dangerColor: "#e30404"
+            })
+            setTimeout(() => {router.push("/");}, 500)
         }
     }
 
     const loginOTP = async (values: loginOTPProps) => {
         try {
             const data = await loginOTPRequest(values)
-            router.push("/main")
+            setIsLogged(true);
+            await AsyncStorage.setItem("@token", data.token);
+            api.defaults.headers.common.Authorization = `Bearer ${data.token}`;
+            toast.show("Login realizado com sucesso!",{
+                type: "success",
+                duration: 2500,
+                placement: "top",
+            })
+            setTimeout(() => {router.push("/main");}, 500)
+
         }catch (e){
             console.error(`Um erro inesperado ocorreu, ${e}`)
-            router.push("/")
+            toast.show("Um erro inesperado ocorreu!",{
+                type: "danger",
+                duration: 2500,
+                placement: "top",
+                dangerColor: "#e30404"
+            })
+            setTimeout(() => {router.push("/");}, 500)
         }
     }
 
@@ -103,7 +128,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
             setIsLogged(false);
             await AsyncStorage.removeItem("@token");
             api.defaults.headers.common.Authorization = "";
-            toast.show("Saiu com sucesso",{
+            toast.show("Saiu com sucesso!",{
                 type: "danger",
                 duration: 2500,
                 placement: "top",
@@ -112,6 +137,12 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
             setTimeout(() => {router.push("/");}, 500)
         } catch (error) {
             console.error("Error while logging out:", error);
+            toast.show("Um erro inesperado ocorreu!",{
+                type: "danger",
+                duration: 2500,
+                placement: "top",
+                dangerColor: "#e30404"
+            })
         }
     };
 

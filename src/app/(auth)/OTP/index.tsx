@@ -25,7 +25,7 @@ export default function OTP(){
                 <AuthTitle>Login</AuthTitle>
                 <AuthSubtitle>Faça login via código de acesso único</AuthSubtitle>
                 <Input label={"Email:"} placeholder={"Insira o seu email aqui..."} onChangeText={t => setValue("email", t)}/>
-                <SubmitButton onPress={handleSubmit(requestOTP)} height="15"><Text style={{fontSize: 25, color: "#F2E0C5"}}>Soliciar código</Text></SubmitButton>
+                <SubmitButton onPress={handleSubmit(requestOTP)} height="15"><Text style={{fontSize: 25, color: "#F2E0C5"}}>Solicitar código</Text></SubmitButton>
             </AuthBox>
         </AuthContainer>
     )
