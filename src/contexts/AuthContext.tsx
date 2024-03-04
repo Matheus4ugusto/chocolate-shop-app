@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { AuthContextProps, SignInProps, SignUpProps } from "../types/context";
+import {AuthContextProps, loginOTPProps, requestOTPProps, SignInProps, SignUpProps} from "../types/context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {router} from "expo-router";
 import { api } from "../services/api";
-import {login, register} from "../services/auth.service";
+import {login, loginOTPRequest, register, requestOTPRequest} from "../services/auth.service";
 import {useToast} from "react-native-toast-notifications";
 
 const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
@@ -78,6 +78,26 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
         }
     };
 
+    const requestOTP = async (values: requestOTPProps) => {
+        try {
+            const data = await requestOTPRequest(values)
+            router.push("/OTP/code")
+        }catch (e){
+            console.error(`Um erro inesperado ocorreu, ${e}`)
+            router.push("/")
+        }
+    }
+
+    const loginOTP = async (values: loginOTPProps) => {
+        try {
+            const data = await loginOTPRequest(values)
+            router.push("/main")
+        }catch (e){
+            console.error(`Um erro inesperado ocorreu, ${e}`)
+            router.push("/")
+        }
+    }
+
     const logout = async () => {
         try {
             setIsLogged(false);
@@ -98,7 +118,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
 
 
     return (
-        <AuthContext.Provider value={{ signIn, signUp, logout }}>
+        <AuthContext.Provider value={{ signIn, signUp, logout, requestOTP, loginOTP }}>
             {children}
         </AuthContext.Provider>
     );

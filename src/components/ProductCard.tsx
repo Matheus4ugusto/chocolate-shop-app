@@ -13,7 +13,7 @@ const ProductCard:React.FC<productProps> = ({id, name, image, price, description
     return(
         <ProductCardBox onPress={product}>
                         <ProductName>{name}</ProductName>
-                        <ProductImage src={`http://192.168.1.106:8000/storage/products/${id}/${image}`}/>
+                        <ProductImage src={`http://192.168.1.113:8000/storage/products/${id}/${image}`}/>
                         <ProductDescripton>
                             {description}
                         </ProductDescripton>

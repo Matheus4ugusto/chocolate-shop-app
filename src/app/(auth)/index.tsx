@@ -41,8 +41,8 @@ export default function SignIn(){
                 <Text style={{color: "#F2E0C5"}}>
                     Não possui uma conta? <Link style={{color: "#00a080"}} href="/signUp">Crie uma.</Link>
                 </Text>
-                <Text style={{color: "#F2E0C5"}}>
-                    <Link style={{color: "#00a080"}} href="/OTP">Deseja fazer login com um OTP?</Link>
+                <Text style={{color: "#F2E0C5", fontSize: 11}}>
+                    <Link style={{color: "#00a080"}} href="/OTP">Deseja fazer login com um código de acesso único?</Link>
                 </Text>
             </AuthBox>
         </AuthContainer>

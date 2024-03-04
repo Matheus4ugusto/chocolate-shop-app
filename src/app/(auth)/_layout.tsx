@@ -11,8 +11,8 @@ export default function AuthLayout(){
                 }}>
                     <Stack.Screen name="index" options={{headerShown: false, title: "Início"}}/>
                     <Stack.Screen name="signUp/index" options={{title: "Cadastro"}}/>
-                    <Stack.Screen name="OTP/index" options={{title: "OTP", headerTitleAlign: "center"}}/>
-                    <Stack.Screen name="OTP/code/index" options={{title: "Verificação de código", headerTitleAlign:"center"}} />
+                    <Stack.Screen name="OTP/index" options={{title: "Código de acesso único", headerTitleAlign: "center"}}/>
+                    <Stack.Screen name="OTP/code/index" options={{title: "Verificação", headerTitleAlign:"center"}} />
                 </Stack>
             </AuthContextProvider>
         </ToastProvider>

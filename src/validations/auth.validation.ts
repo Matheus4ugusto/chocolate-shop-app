@@ -27,3 +27,12 @@ export const registerValidation = yup.object().shape({
         .required()
         .oneOf([yup.ref("password")], "As senhas devem coincidir"),
 });
+
+export const emailValidation = yup.object().shape({
+    email: yup.string().email().required()
+})
+
+export const codeValidation = yup.object().shape({
+    email: yup.string().email().required(),
+    token: yup.string().min(6).max(6).required()
+})

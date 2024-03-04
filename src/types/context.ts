@@ -5,6 +5,14 @@ export interface SignInProps{
     password: string
 }
 
+export interface requestOTPProps{
+    email: string
+}
+
+export interface loginOTPProps extends requestOTPProps{
+    token: string
+}
+
 export interface SignUpProps{
     name: string;
     email: string;
@@ -15,10 +23,10 @@ export interface SignUpProps{
 export interface AuthContextProps{
     signIn: (value: SignInProps) => void;
     signUp: (value: SignUpProps) => void;
-    logout: () => void
+    logout: () => void;
+    requestOTP: (values: requestOTPProps) => void;
+    loginOTP: (values: loginOTPProps) => void;
 }
-
-
 
 export interface CartContextProps {
     addToCart:(product: cartProductProps, quantity: number) => void;

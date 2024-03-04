@@ -21,7 +21,7 @@ export const AuthTitle = styled.Text`
 `
 
 export const AuthSubtitle = styled.Text`
-  font-size: 20px;
+  font-size: 17px;
   color: #F2E0C5;
 `
 
