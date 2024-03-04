@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "chocolate-shop-app",
+    "name": "Chocolate Shop",
     "slug": "chocolate-shop-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,23 +11,35 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "scheme": "chocolate-shop-app",
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
+      "buildNumber": "1",
       "supportsTablet": true
     },
     "android": {
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.matheus4ugusto.chocolateShopApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "b8a5a977-ce7d-4c0a-b8fa-8e3cd730f07b"
+      }
+    }
   }
 }
